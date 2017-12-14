@@ -1,4 +1,4 @@
-* {
+body, canvas {
    height: 100vh;
    background-color: #000000;
    margin: 0 0 0 0;
@@ -6,4 +6,30 @@
    overflow: hidden;
    text-align: center;
    image-rendering: pixelated;
+}
+
+.mimic {
+   height: calc(100vh - 19px * 2);
+   width: calc(100vh * 1.559);
+   margin: auto;
+   background-color: #0088FF;
+   border: 19px solid #FFFFFF;
+}
+.mimic table {
+   height: 100%;
+   width: 100%;
+   color: #FFFFFF;
+   font-size: 2em;
+}
+.mimic tr *:not(:nth-child(3)) {
+   width: 25%;
+}
+.mimic input[type='button'] {
+   width: 50%;
+   height: 100%;
+   font-size: 2em;
+   color: #FFF;
+   cursor: pointer;
+   border: none;
+   background-color: #0088FF;
 }

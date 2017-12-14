@@ -263,8 +263,18 @@ const ROM = {
   },
   keyUp: function (e) {
     RAM.ctape += e.key.toLowerCase()
-    if (e.code === 'KeyH' && e.altKey) {
-      document.location.search = ''
+    if (e.altKey) {
+      switch (e.code) {
+        case 'KeyH':
+          document.location.search = ''
+          break
+        case 'KeyR':
+          alert('Listing ROMs')
+          break
+        case 'Slash':
+          document.location.href = 'help.html'
+          break
+      }
     }
 
     if (RAM.keyUp !== undefined) {
@@ -333,6 +343,11 @@ function bootSequence () {
   window.canvas = document.getElementById('mainCanvas')
   window.ctx = canvas.getContext('2d')
   window.ctx.imageSmoothingEnabled = false
+
+  if (localStorage.help === undefined || localStorage.help === 'false') {
+    localStorage.help = 'true'
+    document.location.href = 'help.html'
+  }
 
   if (document.location.query.cart === undefined) {
     window.location.search = '?cart=disc&loc=internal'
