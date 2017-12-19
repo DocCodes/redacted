@@ -339,21 +339,19 @@ var RAM = {
 }
 // </region>
 
-function bootSequence () {
-  window.canvas = document.getElementById('mainCanvas')
-  window.ctx = canvas.getContext('2d')
-  window.ctx.imageSmoothingEnabled = false
+window.canvas = document.getElementById('mainCanvas')
+window.ctx = canvas.getContext('2d')
+window.ctx.imageSmoothingEnabled = false
 
-  if (localStorage.help === undefined || localStorage.help === 'false') {
-    localStorage.help = 'true'
-    document.location.href = 'help.html'
-  }
-
-  if (document.location.query.cart === undefined) {
-    window.location.search = '?cart=disc&loc=internal'
-  }
-  ROM.loadCartridge()
+if (localStorage.help === undefined || localStorage.help === 'false') {
+  localStorage.help = 'true'
+  document.location.href = 'help.html'
 }
+if (document.location.query.cart === undefined) {
+  window.location.search = '?cart=disc&loc=internal'
+}
+ROM.loadCartridge()
+
 document.onkeypress = ROM.keyPress
 document.onkeyup = ROM.keyUp
 document.onkeydown = ROM.keyDown
